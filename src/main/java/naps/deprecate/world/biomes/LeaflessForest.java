@@ -19,12 +19,11 @@ import net.minecraftforge.registries.ForgeRegistries;
 
 
 
-public class ModBiomes {
-    public static final DeferredRegister<Biome> BIOMES =
-            DeferredRegister.create(ForgeRegistries.BIOMES, Deprecate.MOD_ID);
+public class LeaflessForest {
 
-    public static final RegistryObject<Biome> LEAFLESS_FOREST = BIOMES.register("leafless_forest",
-            ModBiomes::createLeaflessForest);
+    public Biome getBiome() {
+        return createLeaflessForest();
+    }
 
     private static Biome createLeaflessForest() {
         MobSpawnSettings.Builder spawnSettings = new MobSpawnSettings.Builder();
@@ -47,7 +46,4 @@ public class ModBiomes {
                 .generationSettings(generationSettings.build()).build();
     }
 
-    public static void register(IEventBus eventBus) {
-        BIOMES.register(eventBus);
-    }
 }
